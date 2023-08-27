@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import static ua.javarush.encoder.Runner.startFileName;
 
 public class FileService {
+
     public static ArrayList<Character> source = new ArrayList<>();
+
     public static ArrayList<Character> result = new ArrayList<>();
 
     private static int realCharRead;
