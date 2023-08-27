@@ -67,6 +67,7 @@ public class CaesarCipher {
             }
         }
     }
+
     private static boolean checkSymbol(String decryptedText, String firstSymbol, String secondSymbol) {
         int index = decryptedText.indexOf(firstSymbol);
         if (index > 0) {
