@@ -30,21 +30,26 @@ public class CaesarCipher {
         for (Character character : source) {
             char[] table = checkTable(character);
             if (table != null) {
-                for (int j = 0; j < table.length; j++) {
-                    if (character == table[j]) {
-                        int resultKey = checkKey(key, table);
-                        if (resultKey >= 0) {
-                            symbol = table[(j + resultKey) % table.length];
-                        } else {
-                            symbol = table[(table.length + j + resultKey) % table.length];
-                        }
-                    }
-                }
+                symbol = getSymbol(key, character, table);
             } else {
                 symbol = character;
             }
             result.add(symbol);
         }
+    }
+
+    private static char getSymbol(int key, Character character, char[] table) {
+        for (int j = 0; j < table.length; j++) {
+            if (character == table[j]) {
+                int resultKey = checkKey(key, table);
+                if (resultKey >= 0) {
+                    return table[(j + resultKey) % table.length];
+                } else {
+                    return table[(table.length + j + resultKey) % table.length];
+                }
+            }
+        }
+        return character;
     }
 
     public void bruteForce() {
